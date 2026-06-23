@@ -18,7 +18,9 @@ async def hello(ctx):
 async def dado(ctx):
     import random
     await ctx.send(f"🎲 Você tirou {random.randint(1,6)}")
-
+@bot.command()
+async def hehe(ctx):
+    await ctx.send("HE HE HE HA")
 @bot.command()
 async def pasw(ctx):
     await ctx.send(gen_pass(10))
