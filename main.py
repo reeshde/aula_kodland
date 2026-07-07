@@ -15,7 +15,7 @@ async def on_ready():
 
 @bot.command()
 async def hello(ctx):
-    await ctx.send(f'Olá eu sou um bot {bot.user}!')
+    await ctx.send(f'Olá eu sou um bot, me chamo {bot.user}!')
 @bot.command()
 async def dado(ctx):
     import random
