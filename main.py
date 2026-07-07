@@ -24,11 +24,18 @@ async def hehe(ctx):
     risadas = ["KKKKKKKKKKKK",
                "MUAHAHAHAHAHA",
                "HA HA HA HA HA",
-               "RS RS RS RS"
+               "RS RS RS RS",
+               "HUE HUE HUE HUE"
         ]
     await ctx.send(random.choice(risadas))
 @bot.command()
 async def pasw(ctx):
     await ctx.send(gen_pass(10))
+
+@bot.command()
+async def meme(ctx):
+    with open('images/mem1.png', 'rb') as f:
+        picture = discord.File(f)
+    await ctx.send(file=picture)
 
 bot.run("token")
