@@ -1,4 +1,6 @@
 import discord
+import os, random
+import requests
 from discord.ext import commands
 from bot_logic import gen_pass
 
