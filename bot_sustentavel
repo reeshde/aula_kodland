@@ -1,0 +1,43 @@
+import discord
+import os, random
+import requests
+from discord.ext import commands
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix='$', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'Estamos logados como {bot.user}')
+
+@bot.command()
+async def hello(ctx):
+    await ctx.send(f'Olá eu sou um bot, me chamo {bot.user}!')
+@bot.command()
+async def curiosidades(ctx):
+    curio = ["voce sabia que o plástico que descartamos incorretamente pode levar mais de 400 anos para se decompor na natureza. Esse material é tão persistente que estima-se que 8 milhões de toneladas de plástico cheguem aos oceanos anualmente, o equivalente a um caminhão de lixo despejado por minuto",
+             " Um estudo mostrou que, em média, uma pessoa ingere cerca de 1.769 partículas de plástico por semana apenas bebendo água.",
+             " O Brasil é o quarto país que mais produz poluição plástica no mundo, atrás apenas dos Estados Unidos, China e Índia.",
+             "Dia Mundial da Terra: A data foi criada em 1970 pelo senador norte-americano Gaylord Nelson em protesto contra um grande desastre de vazamento de petróleo na Califórnia",
+             "voce sabia que o programador que fez esse codigo é fã de minecraft"
+        ]
+    await ctx.send(random.choice(curio))
+
+def get_cat_image_url():    
+    url = "https://api.thecatapi.com/v1/images/search"
+    headers = {
+        "x-api-key":"live_gewvQCdXnBIlUNNa1VHnh3ouWBDIDEVg8EJWdavO2pLPd5eQPJ4bhFCDwJSfkbJX"
+    }
+    res = requests.get(url, headers=headers)
+    data = res.json()
+    return data[0]['url']
+
+@bot.command()
+async def gatos(ctx):
+    image_url = get_cat_image_url()
+    await ctx.send(image_url)
+
+
+bot.run("seu token aqui")
