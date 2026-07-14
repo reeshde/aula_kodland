@@ -46,7 +46,9 @@ def get_duck_image_url():
     res = requests.get(url)
     data = res.json()
     return data['url']
-
+@bot.command()
+async def todos(ctx):
+    await ctx.send("@everyone")
 
 @bot.command('duck')
 async def duck(ctx):
